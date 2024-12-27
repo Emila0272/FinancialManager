@@ -1,0 +1,42 @@
+﻿<Page x:Class="FinancialManager.Views.StatisticsAndReports"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:FinancialManager.Views"
+      xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="800"
+      Title="StatisticsAndReports">
+
+    
+    
+    <Grid Background="#FFFAFAFA" Margin="20">
+        <!-- Заголовок -->
+        <TextBlock Text="Статистика и отчеты" FontSize="20" FontWeight="Bold" 
+                   HorizontalAlignment="Center" Margin="0,10,0,20" />
+
+        <lvc:CartesianChart Name="cartesianChart" Margin="20,50,20,20">
+            <lvc:CartesianChart.Series>
+                <!-- Привязка коллекции Series из ViewModel -->
+                <lvc:ColumnSeries Title="Доходы"
+                                  Fill="Blue"
+                                  Values="{Binding Series[0].Values}" />
+                <lvc:ColumnSeries Title="Расходы"
+                                  Fill="Red"
+                                  Values="{Binding Series[1].Values}" />
+            </lvc:CartesianChart.Series>
+
+            <!-- Настройки осей -->
+            <lvc:CartesianChart.AxisX>
+                <lvc:Axis Title="Дата"
+                          Labels="{Binding DayLabels }" />
+            </lvc:CartesianChart.AxisX>
+
+            <lvc:CartesianChart.AxisY>
+                <lvc:Axis Title="Сумма"
+                          LabelFormatter="{Binding CurrencyFormatter}" />
+            </lvc:CartesianChart.AxisY>
+        </lvc:CartesianChart>
+    </Grid>
+</Page>

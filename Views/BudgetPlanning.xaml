@@ -1,0 +1,42 @@
+﻿<Page x:Class="FinancialManager.Views.BudgetPlanning"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="800"
+      Title="BudgetPlanning">
+
+    <Grid Background="#FFFAFAFA" Margin="20">
+        <!-- Заголовок -->
+        <TextBlock Text="Планирование бюджета" FontSize="24" FontWeight="Bold" 
+                   HorizontalAlignment="Center" Margin="0,10,0,20" />
+
+        <!-- Ввод данных бюджета -->
+        <StackPanel Margin="50,50,50,20" HorizontalAlignment="Center">
+            <!-- Ввод планируемого бюджета -->
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                <TextBlock Text="Планируемый бюджет:" FontSize="16" Margin="0,0,10,0"/>
+                <TextBox Text="{Binding PlannedBudget, Mode=TwoWay}" Width="200" Height="30" />
+            </StackPanel>
+
+            <!-- Ввод расходов -->
+            <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                <TextBlock Text="Расход:" FontSize="16" Margin="0,0,10,0"/>
+                <TextBox Text="{Binding NewExpense, Mode=TwoWay}" Width="200" Height="30" />
+                <Button Content="Добавить" Command="{Binding AddExpenseCommand}" 
+                        Width="100" Margin="10,0,0,0"/>
+            </StackPanel>
+
+            <!-- Остаток средств -->
+            <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                <TextBlock Text="Остаток средств:" FontSize="16" Margin="0,0,10,0"/>
+                <TextBlock Text="{Binding RemainingBudget}" FontSize="16" FontWeight="Bold" />
+            </StackPanel>
+        </StackPanel>
+
+        <!-- Прогресс-бар бюджета -->
+        <ProgressBar Name="BudgetProgressBar" Maximum="{Binding PlannedBudget}" Value="{Binding TotalExpenses}" Height="30" 
+                     Margin="50,20,50,0" HorizontalAlignment="Stretch"/>
+    </Grid>
+</Page>

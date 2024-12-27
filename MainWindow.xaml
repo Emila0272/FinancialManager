@@ -1,0 +1,31 @@
+﻿<Window x:Class="FinancialManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FinancialManager"
+        mc:Ignorable="d"
+        xmlns:navbar="clr-namespace:FinancialManager.CustomUserControls"
+        Title="MainWindow" Height="660" Width="850">
+
+    <Grid Background="#FFFAFAFA">
+        <!-- Определение строк и столбцов -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Навбар -->
+            <RowDefinition Height="*"/>
+            <!-- Основное содержимое -->
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <!-- Ширина всей сетки -->
+        </Grid.ColumnDefinitions>
+
+        <!-- Навбар -->
+        <ContentControl Content="{Binding NavBar}" Grid.Row="0" VerticalAlignment="Top" Margin="0,10,0,0"/>
+
+        <!-- Основное содержимое -->
+        <Frame Name="GreetingFrame" Grid.Row="1" Margin="10" Content="{Binding CurrentPage}" VerticalAlignment="Stretch" Height="Auto"/>
+    </Grid>
+</Window>
